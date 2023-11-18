@@ -9,6 +9,7 @@ class AppTheme {
   static ThemeData themeData = ThemeData(
       scaffoldBackgroundColor: AppColor.whiteColor,
       primaryColor: AppColor.titleColor,
+      appBarTheme: const AppBarTheme(color: Colors.transparent, elevation: 0.0),
       buttonTheme: ButtonThemeData(
           buttonColor: AppColor.blueColor,
           shape: RoundedRectangleBorder(

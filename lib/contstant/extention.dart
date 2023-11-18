@@ -25,10 +25,18 @@ extension BodyLarge on TextStyle {
 
 extension BodyMid on TextStyle {
   TextStyle get bodyMid => GoogleFonts.poppins(
-      color: AppColor.titleColor, fontWeight: FontWeight.w600, fontSize: 15.sp);
+        color: AppColor.titleColor,
+        fontWeight: FontWeight.w600,
+        fontSize: 15.sp,
+      );
 }
 
 extension BodySmall on TextStyle {
   TextStyle get bodySmall => GoogleFonts.poppins(
       color: AppColor.greyColor, fontWeight: FontWeight.w400, fontSize: 13.sp);
+}
+
+extension BodySmallInter on TextStyle {
+  TextStyle get bodySmallInter => GoogleFonts.inter(
+      color: AppColor.greyColor, fontWeight: FontWeight.w400, fontSize: 10.sp);
 }
