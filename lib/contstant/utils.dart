@@ -20,25 +20,3 @@ class AppUtil {
       );
   static getDateTime(DateTime dateTime) => DateFormat.yMMMd().format(dateTime);
 }
-
-
-
-//  Positioned(
-//                             right: 10.w,
-//                             bottom: 10.w,
-//                             child: Container(
-//                               // padding: const EdgeInsets.all(4.0),
-//                               height: 17.h,
-//                               alignment: Alignment.center,
-//                               width: 35.w,
-//                               decoration: BoxDecoration(
-//                                   color: Theme.of(context).primaryColor,
-//                                   borderRadius: BorderRadius.circular(4.r)),
-//                               child: Text(
-//                                 video.duration,
-//                                 style: const TextStyle()
-//                                     .bodySmallInter
-//                                     .copyWith(color: Colors.white),
-//                               ),
-//                             ),
-//                           )

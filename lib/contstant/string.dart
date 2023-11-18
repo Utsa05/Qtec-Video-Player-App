@@ -15,4 +15,5 @@ class AppString {
   //?Routes
   static const String initialRoute = "/";
   static const String videoViewRoute = "/view-video";
+  static const String emptyPageRoute = "/empty-page";
 }

@@ -1,21 +1,21 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'di/locator.dart';
 import 'presentation/video-app.dart';
 
 void main() async {
+  //!Flutter Engine
   WidgetsFlutterBinding.ensureInitialized();
+
+  //!Dependency
   unawaited(initLocator());
 
-  // final getTrendingVideoUsecase = getInstant<GetTrendingVideoUsecase>();
-
-  // final Either<AppError, VideoResultModel> eitherVideoResponse =
-  //     await getTrendingVideoUsecase(const VideoParm(no: 1));
-
-  // eitherVideoResponse.fold((error) => print(error.message),
-  //     (vidoeResultModel) => print(vidoeResultModel));
+  //!Only Potrait Mode
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   runApp(const VideoApp());
 }

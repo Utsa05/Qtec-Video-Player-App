@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:qtec_video_player_app/contstant/extention.dart';
+import 'package:qtec_video_player_app/contstant/string.dart';
 import '../../../../contstant/color.dart';
 import '../../../../contstant/utils.dart';
 import '../../../../data/models/video-result-model.dart';
+import '../../../widgets/image.dart';
 
 class VideoItemWidget extends StatelessWidget {
   const VideoItemWidget({
@@ -18,15 +20,21 @@ class VideoItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 20.h),
-      height: 290.h,
-      width: double.infinity,
-      child: Column(children: [
-        ThumnailImage(video: video),
-        AppUtil.box(15.h),
-        VideoInformation(video: video, date: date)
-      ]),
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, AppString.videoViewRoute,
+            arguments: video);
+      },
+      child: Container(
+        margin: EdgeInsets.only(bottom: 20.h),
+        height: 290.h,
+        width: double.infinity,
+        child: Column(children: [
+          ThumnailImage(video: video),
+          AppUtil.box(15.h),
+          VideoInformation(video: video, date: date)
+        ]),
+      ),
     );
   }
 }
@@ -101,39 +109,28 @@ class ThumnailImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        CachedNetworkImage(
-          placeholder: (context, url) => Padding(
-              padding: EdgeInsets.all(80.h),
-              child: const CircularProgressIndicator()),
-          imageUrl: video.thumbnail,
-          height: 192.h,
-          fit: BoxFit.cover,
-          errorWidget: (context, url, error) {
-            return const Icon(
-              Icons.error,
-              color: Colors.red,
-            );
-          },
-        ),
-        Positioned(
-          right: 10.w,
-          bottom: 10.w,
-          child: Container(
-            // padding: const EdgeInsets.all(4.0),
-            height: 17.h,
-            alignment: Alignment.center,
-            width: 35.w,
-            decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.circular(4.r)),
-            child: Text(
-              video.duration,
-              style: const TextStyle()
-                  .bodySmallInter
-                  .copyWith(color: Colors.white),
-            ),
-          ),
-        )
+        ImageWidget(image: video.thumbnail, size: 198.h),
+        video.duration != "00:00"
+            ? Positioned(
+                right: 10.w,
+                bottom: 10.w,
+                child: Container(
+                  // padding: const EdgeInsets.all(4.0),
+                  height: 17.h,
+                  alignment: Alignment.center,
+                  width: 35.w,
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(4.r)),
+                  child: Text(
+                    video.duration,
+                    style: const TextStyle()
+                        .bodySmallInter
+                        .copyWith(color: Colors.white),
+                  ),
+                ),
+              )
+            : const SizedBox.shrink()
       ],
     );
   }
